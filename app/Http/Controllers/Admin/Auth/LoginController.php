@@ -16,7 +16,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = "/user/index";
+    protected $redirectTo = "Admin/user/list";
 
     public function __construct()
     {

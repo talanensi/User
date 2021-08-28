@@ -16,4 +16,8 @@ class State extends Model
         'state_name'
     ];
 
+    public function Country_data() {
+        return $this->belongsTo(Country::class,'country_id','id');
+    }
+
 }

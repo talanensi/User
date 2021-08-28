@@ -30,12 +30,12 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" {{$edit->gender == 'Male' ? 'checked' : ''}} >
-                                        <label class="form-check-label" for="male">Male</label>
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" {{$edit->gender == 'male' ? 'checked' : ''}} >
+                                        <label class="form-check-label" for="male">male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" {{$edit->gender == 'Female' ? 'checked' : ''}}  >
-                                        <label class="form-check-label" for="female">Female</label>
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" {{$edit->gender == 'female' ? 'checked' : ''}}  >
+                                        <label class="form-check-label" for="female">female</label>
                                     </div>
                                 </div>
                                 <!-- <div class="form-row"> -->
@@ -100,8 +100,11 @@
                             Update
                             </button>
 
-                            
+                            <a href="{{route('admin.user.list')}}" type="back" class="btn btn-dark waves-effect waves-light">
+                                Back
+                            </a>
                         </div>
+                       
                     </div>
                 </form>
             </div>
@@ -188,7 +191,7 @@ else
     {
         if(result != 'Not_Unique')
         {
-            $('#error_mobile').html('<label class = "text-success">Phone Mobile Available</label>');
+            $('#error_mobile').html('<label class = "text-success">Phone Number is Available</label>');
             $('#mobile').removeClass('has-error');
             $('.register').attr('disabled',false);
         }
@@ -290,7 +293,7 @@ function editregistation(form) {
                     $('.ajax-msg').append($html);
                     if(result.status=="success"){
                     alert("register updated seccessfully")
-                        window.location.href = "..user/list"
+                        // window.location.href = "Admin/user/list"
 
                     }
 

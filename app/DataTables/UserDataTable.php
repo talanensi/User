@@ -24,14 +24,14 @@ class UserDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function($data){
                 $result = "";
-                // $result = ' <a class="btn btn-sm btn-info" title="view registarion Details " href='.route("test",$data->id).'><i class="fa fa-eye"></i></a> ';
+                $result = ' <a class="btn btn-sm btn-dark" title="view registarion Details " href='.route("admin.user.test",$data->id).'><i class="fa fa-eye"></i></a> ';
                if($data->status == 1) {
                    $result .= '<button type="button" class="btn btn-secondary btn-sm changeStatus" status="0" title="click to Inactivate" category_id="'.$data->id.'"><i class="fa fa-lock"></i></button> ';
                } else {
                    $result .= '<button type="button" class="btn btn-danger btn-sm changeStatus" status="1" title="click to Activate" category_id="'.$data->id.'"><i class="fa fa-unlock"></i></button> ';
                }
-               $result .= '<a class="btn btn-sm btn-info" title="edit registation Details" href='.route("admin.user.test1",$data->id).'><i class="fa fa-pencil"></i></a> ';
-                            // <button type="button" id="cat_delete" class="btn btn-sm btn-danger" title="delete category" category_id="'.$data->id.'"><i class="fa fa-trash"></i></button> ';
+               $result .= '<a class="btn btn-sm btn-dark" title="edit registation Details" href='.route("admin.user.test1",$data->id).'><i class="fa fa-pencil"></i></a> 
+                            <button type="button" id="cat_delete" class="btn btn-sm btn-danger" title="delete category" category_id="'.$data->id.'"><i class="fa fa-trash"></i></button> ';
 
                return $result;
            })
@@ -43,6 +43,18 @@ class UserDataTable extends DataTable
                    return '<span class="badge badge-danger">Active</span>';
                }
            })
+
+           ->editColumn('country',function($data) {
+            return $data->Country_data->country_name;
+            })
+
+           ->editColumn('state',function($data) {
+            return $data->State_data->state_name;
+            })
+
+            ->editColumn('city',function($data) {
+                return $data->City_data->city_name;
+            })
 
            ->rawColumns(['action', 'status'])
            ->addIndexColumn();

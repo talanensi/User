@@ -4,20 +4,19 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-
                 <form class="register" method="POST" enctype="multipart/form-data" id="add_registation_form">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="first_name">First Name</label>
                             <!-- <input type="hidden" id="id" name="id"> -->
-                            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name..." maxlength="20" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==15)" required>
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name..." maxlength="20" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==15)" >
                             <span class="error-msg-input text-danger"></span>
                             <!-- <span class="alert alert-danger"></span> -->
                         </div>
                         <div class="form-group col-md-6">
                             <label for="last_name">Last Name</label>
-                            <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter last name..." maxlength="20" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==15)" required>
+                            <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter last name..." maxlength="20" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==15)" >
                             <span class="error-msg-input text-danger"></span>
                         </div>
                     </div>
@@ -27,44 +26,44 @@
                         </div>
                         <div class="col-4">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="male" value="Male" required>
-                                <label class="form-check-label" for="male">Male</label>
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" >
+                                <label class="form-check-label" for="male">male</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
-                                <label class="form-check-label" for="female">Female</label>
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                <label class="form-check-label" for="female">female</label>
                             </div>
                         </div>
                         <!-- <div class="form-row"> -->
                         <div class="form-group col-md-6">
                             <label for="dob">BirthDate</label>
-                            <input type="text" name="dob" id="datepicker" class="form-control" placeholder="Enter Employee dob.." required />
+                            <input type="text" name="dob" id="datepicker" class="form-control" placeholder="Enter Employee dob.."  />
                             <span class="error-msg-input text-danger"></span>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <input type="text" name="email" class="form-control" id="email" placeholder="Enter email..." required>
+                            <input type="text" name="email" class="form-control" id="email" placeholder="Enter email..." >
                             <span id="error_email"></span>
 
                         </div>
                         <div class="form-group col-md-6">
                             <label for="mobile">Phone</label>
-                            <input type="number" name="mobile" id="mobile" class="form-control" placeholder="Enter phone number..." maxlength="15" required>
+                            <input type="number" name="mobile" id="mobile" class="form-control" placeholder="Enter phone number..." maxlength="15" >
                             <span id="error_mobile"></span>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="enter confirm password..." autocomplete="new-password" maxlength="15" required>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="enter confirm password..." autocomplete="new-password" maxlength="15" >
                             <input type="checkbox" name='password' id="check" placeholder="enter password..." class='' />Show Password</td>
                             <span class="error-msg-input text-danger"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="confirm_password">Confrim Password</label>
-                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="enter confirm password..." autocomplete="new-password" maxlength="15" required>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="enter confirm password..." autocomplete="new-password" maxlength="15" >
                             <input type="checkbox" name='confirm_password' id="checkk" placeholder="enter confirm password..." class='' />Show confirm password</td>
                             <span class="error-msg-input text-danger"></span>
                         </div>
@@ -72,7 +71,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="country">Country</label>
-                            <select class="form-control" id="country-dropdown" name="country" required>
+                            <select class="form-control" id="country-dropdown" name="country" >
                                 <option value="">Select Country</option>
                                 @foreach ($countries as $country)
                                 <option value="{{$country->id}}">
@@ -83,13 +82,13 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="state">State</label>
-                            <select class="form-control" id="state-dropdown" name="state" required>
+                            <select class="form-control" id="state-dropdown" name="state" >
                                 <option value="">Select country first</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="city">City</label>
-                            <select class="form-control" id="city-dropdown" name="city" required>
+                            <select class="form-control" id="city-dropdown" name="city" >
                                 <option value="">Select state first</option>
                             </select>
                         </div>
@@ -97,7 +96,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="image">Image</label>
-                            <input type="file" id="image" name="image" class="form-control" required>
+                            <input type="file" id="image" name="image" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group">
@@ -106,6 +105,9 @@
                                 Submit
                             </button>
 
+                            <a href="{{route('admin.user.list')}}" type="Cencle" class="btn btn-dark waves-effect waves-light">
+                                Cencle
+                            </a>
 
                         </div>
                 </form>
@@ -181,7 +183,7 @@
                     },
                     success: function(result) {
                         if (result != 'Not_Unique') {
-                            $('#error_mobile').html('<label class = "text-success">Phone Mobile Available</label>');
+                            $('#error_mobile').html('<label class = "text-success">Phone Number is Available</label>');
                             $('#mobile').removeClass('has-error');
                             $('.register').attr('disabled', false);
                         } else if (result != 'Unique') {

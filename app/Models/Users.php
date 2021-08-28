@@ -36,4 +36,16 @@ class Users extends Model
     {
         return $value ? asset('storage/image'.'/'.$value) : NULL;
     }
+
+    public function Country_data() {
+        return $this->belongsTo(Country::class,'country','id')->select('id','country_name');
+    }
+    
+    public function State_data() {
+        return $this->belongsTo(State::class,'state','id')->select('id','state_name');
+    }
+
+    public function City_data() {
+        return $this->belongsTo(City::class,'city','id')->select('id','city_name');
+    }
 }

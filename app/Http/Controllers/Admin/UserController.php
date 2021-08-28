@@ -113,6 +113,13 @@ class UserController extends Controller
         return $response;
     }
 
+    public function test($id)
+    {
+        $view = Users::with(['Country_data','State_data','City_data'])->find($id);
+        return view('admin.user.view',compact('view'));
+
+    }
+
     public function test1($id)
     {
         $edit = Users::find($id);
@@ -129,9 +136,9 @@ class UserController extends Controller
         // $image = uploadFile($request->image,'image');
         if(isset($request->image)){
 
-            $image = uploadFile($request->image,'image');
+        $image = uploadFile($request->image,'image');
  
-        $category = Users::where('id',$request->user_id)->update([
+        $category = Users::where('id',$request->id)->update([
                                         'fname'=>$request->fname,
                                         'lname'=>$request->lname,
                                         'gender'=>$request->gender,
@@ -144,7 +151,7 @@ class UserController extends Controller
                                         'city'=>$request->city,
                                         ]);
                                     }else{
-                                        $category = Users::where('id',$request->user_id)->update([
+                                        $category = Users::where('id',$request->id)->update([
                                             'fname'=>$request->fname,
                                             'lname'=>$request->lname,
                                             'gender'=>$request->gender,
@@ -170,6 +177,37 @@ class UserController extends Controller
         }
 
         return $response;
+    }
+
+    public function delete(Request $request)
+    {
+        return Users::where('id',$request->id)->delete();
+    }
+
     
+    public function changeStatus(Request $request)
+    {
+        $cat = Users::where('id',$request->id)->first();
+        $cat->status = $request->status;
+        $cat->save();
+
+        if($cat) {
+            if($cat['status'] == 1)
+            {
+                $data['msg'] = 'user Inactivated successfully.';
+                $data['action'] = 'Inactivated!';
+            } else {
+                $data['msg'] = 'user Activated successfully.';
+                $data['action'] = 'Activated!';
+            }
+            $data['status'] = 'success';
+        } else {
+            $data['msg'] = 'Something went wrong';
+            $data['action'] = 'Cancelled!';
+            $data['status'] = 'error';
+        }
+
+        return $data;
     }
 }
+

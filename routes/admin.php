@@ -8,8 +8,7 @@ Route::group(['namespace' => 'Auth'], function(){
     # Login Routes
     Route::get('login',     'LoginController@showLoginForm')->name('login');
     Route::post('login',    'LoginController@login');
-    Route::post('logout',   'LoginController@logout')->name('logout');
-
+    Route::post('logout',     'LoginController@logout')->name('logout');
 });
 
 Route::group(['middleware' => 'auth:admin'],function (){
@@ -27,8 +26,9 @@ Route::group(['middleware' => 'auth:admin'],function (){
         Route::get('add',                      'UserController@view')->name('add');
         Route::get('test1/{id}',               'UserController@test1')->name('test1');
         Route::post('update',                  'UserController@update')->name('update');
-
-
+        Route::get('test/{id}',                'UserController@test')->name('test');
+        Route::post('delete',                  'UserController@delete')->name('delete');
+        Route::patch('change-status',          'UserController@changeStatus')->name('change_status');
 
     });
 
